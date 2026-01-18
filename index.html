@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri Interaktif 16:9</title>
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --accent-color: #ec4899;
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        body {
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            color: white;
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        /* Container untuk Grid Gambar */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        /* Styling Kartu */
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 16px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-12px);
+            border-color: var(--primary-color);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(99, 102, 241, 0.2);
+        }
+
+        /* Frame 16:9 */
+        .image-box {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            border-radius: 18px;
+            position: relative;
+        }
+
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .card:hover .image-box img {
+            transform: scale(1.15);
+        }
+
+        /* Overlay Keterangan Hover */
+        .overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover .overlay {
+            opacity: 1;
+        }
+
+        .view-btn {
+            background: white;
+            color: black;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transform: translateY(20px);
+            transition: transform 0.4s ease;
+        }
+
+        .card:hover .view-btn {
+            transform: translateY(0);
+        }
+
+        /* Bagian Teks */
+        .content {
+            padding: 20px 10px 10px 10px;
+        }
+
+        .badge {
+            background: var(--primary-color);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .card:nth-child(2) .badge { background: var(--accent-color); }
+        .card:nth-child(3) .badge { background: #10b981; }
+
+        .content h2 {
+            margin: 0 0 10px 0;
+            font-size: 1.3rem;
+            color: #f8fafc;
+        }
+
+        .content p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        /* Animasi Mengapung yang Berbeda Tiap Kartu */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .card { animation: float 5s ease-in-out infinite; }
+        .card:nth-child(2) { animation-delay: 1s; }
+        .card:nth-child(3) { animation-delay: 2s; }
+
+    </style>
+</head>
+<body>
+
+    <h1>ＰＲＯＤＵＫ    ＳＡＬＬ</h1>
+
+    <div class="gallery-grid">
+        
+        <div class="card">
+            <div class="image-box">
+                <img src="https://files.catbox.moe/a6bgxl.jpg" alt="Darkverse">
+                <div class="overlay"><span class="view-btn">LIHAT FOTO</span></div>
+            </div>
+            <div class="content">
+                <span class="badge">𝙃𝘼𝙍𝙂𝘼</span>
+                <h2>𝗗𝗔𝗥𝗞𝗩𝗘𝗥𝗦𝗘 𝗩𝟱</h2>
+                <p>𝗠𝗲𝗺𝗯𝗲𝗿 : 50k 1bulan | 100k permanen     𝗥𝗲𝘀𝘀𝗲𝗹𝗲𝗿 : 90k 1bulan | 160k permanen  ... 𝗔𝗱𝗺𝗶𝗻 : 120k 1bulan | 200k permanen </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="image-box">
+                <img src="https://files.catbox.moe/2zl8rc.jpg" alt="SurXrat">
+                <div class="overlay"><span class="view-btn">LIHAT FOTO</span></div>
+            </div>
+            <div class="content">
+                <span class="badge">𝙃𝘼𝙍𝙂𝘼</span>
+                <h2>𝙎𝙐𝙍𝙓𝙍𝘼𝙏 [ 𝘼𝙋𝙆 𝙎𝘼𝘿𝘼𝙋 ]</h2>
+                <p>Member: 55K permanen / selamanya</p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
